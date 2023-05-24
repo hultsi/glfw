@@ -2186,8 +2186,15 @@ void _glfwSetWindowPosX11(_GLFWwindow* window, int xpos, int ypos)
         XFree(hints);
     }
 
+    XSetWindowAttributes wa = { 0 };
+    wa.override_redirect = True;
+    XChangeWindowAttributes(_glfw.x11.display, window->x11.handle, CWOverrideRedirect, &wa);
+
     XMoveWindow(_glfw.x11.display, window->x11.handle, xpos, ypos);
     XFlush(_glfw.x11.display);
+
+    wa.override_redirect = False;
+    XChangeWindowAttributes(_glfw.x11.display, window->x11.handle, CWOverrideRedirect, &wa);
 }
 
 void _glfwGetWindowSizeX11(_GLFWwindow* window, int* width, int* height)
