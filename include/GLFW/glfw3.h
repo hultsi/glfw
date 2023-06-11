@@ -558,6 +558,12 @@ extern "C" {
  *  GLFW_LOCK_KEY_MODS input mode is set.
  */
 #define GLFW_MOD_NUM_LOCK        0x0020
+/*! @brief If this bit is set button 1 was held down
+ *
+ *  If this bit is set button 1 was held down
+ *  GLFW_LOCK_BUTTON_1 input mode is set.
+ */
+#define GLFW_MOD_BUTTON_1    0x0040
 
 /*! @} */
 
