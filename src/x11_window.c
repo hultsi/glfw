@@ -230,6 +230,8 @@ static int translateState(int state)
         mods |= GLFW_MOD_CAPS_LOCK;
     if (state & Mod2Mask)
         mods |= GLFW_MOD_NUM_LOCK;
+    if (state & Button1Mask)
+        mods |= GLFW_MOD_BUTTON_1;
 
     return mods;
 }
@@ -1391,7 +1393,7 @@ static void processEvent(XEvent *event)
         case ButtonRelease:
         {
             const int mods = translateState(event->xbutton.state);
-
+            printf("MODS: %i\n", event->xbutton.state);
             if (event->xbutton.button == Button1)
             {
                 _glfwInputMouseClick(window,
